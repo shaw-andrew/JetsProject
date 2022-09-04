@@ -2,6 +2,8 @@ package com.skilldistillery.jets.entities;
 
 public class SeaPlane extends Jet implements FloatationDevice {
 
+	
+	public SeaPlane() {}
 	public SeaPlane(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
 	}

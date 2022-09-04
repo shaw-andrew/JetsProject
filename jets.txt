@@ -1,5 +1,5 @@
-Passenger,Cessna 172,190,750,400_000
-Sea Plane,Berieve Be200,435,2000,53_000_000
-Cargo Jet,Boeing C-17,590,2800,340_000_000
-Cargo Jet,Boeing 747-8F,570,5100,418_000_000
-Passenger,Airbus A350,580,8400,317_000_000
+Passenger Jet,Cessna 172,190,750,400000
+Sea Plane,Berieve Be200,435,2000,53000000
+Cargo Jet,Boeing C-17,590,2800,340000000
+Cargo Jet,Boeing 747-8F,570,5100,418000000
+Passenger Jet,Airbus A350,580,8400,313000000

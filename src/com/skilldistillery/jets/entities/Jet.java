@@ -5,12 +5,14 @@ import java.util.Objects;
 public abstract class Jet {
 //abstract method
 	
-	private String type;
+	//private String type;
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
 	
+	//no arg constructor
+	public Jet() {}
 	
 	public Jet(String model, double speed, int range, long price) {
 		this.model = model;
@@ -20,13 +22,13 @@ public abstract class Jet {
 	}
 	
 
-	public String getType() {
-		return type;
-	}
+//	public String getType() {
+//		return type;
+//	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+//	public void setType(String type) {
+//		this.type = type;
+//	}
 
 	public String getModel() {
 		return model;
@@ -62,15 +64,14 @@ public abstract class Jet {
 	
 	@Override
 	public String toString() {
-		return "Jet [type=" + type + ", model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price
-				+ "]";
+		return "Jet model: " + model + ", speed: " + speed + " mph, range: " + range + " miles, price: $" + price;
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(model, price, range, speed, type);
+		return Objects.hash(model, price, range, speed);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,7 +82,6 @@ public abstract class Jet {
 			return false;
 		Jet other = (Jet) obj;
 		return Objects.equals(model, other.model) && price == other.price && range == other.range
-				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed)
-				&& Objects.equals(type, other.type);
-	}
-}
+				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed);
+	}}
+	
