@@ -50,6 +50,7 @@ public class JetsApplication {
 
 			case 7:
 				ja.addAJet(kb);
+				System.out.println("Your plane has been added. Please select your next menu action.");
 				break;
 
 			case 8:
