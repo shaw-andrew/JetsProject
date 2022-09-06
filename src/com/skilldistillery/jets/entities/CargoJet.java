@@ -8,8 +8,8 @@ public class CargoJet extends Jet implements CargoBay {
 	}
 
 	@Override
-	public void loadCargo() {
-		System.out.println("Cargo bay is full");
+	public String loadCargo() {
+		return " cargo bay is full.";
 	}
 
 }

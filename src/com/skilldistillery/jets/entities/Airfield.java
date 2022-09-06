@@ -17,6 +17,7 @@ public class Airfield {
 	private List<Jet> planes;
 
 	public void loadPlanes() {
+		// IO try/catch to read in initial planes in from jets.txt
 		try (BufferedReader bufIn = new BufferedReader(new FileReader("jets.txt"))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
@@ -34,29 +35,18 @@ public class Airfield {
 		}
 	}
 
-	public ArrayList<Jet> getPlanes(List<Jet> airfield) {
-		ArrayList<Jet> jetCopy = null;
-		for (Jet jet : airfield) {
-			jetCopy.add(jet);
-		}
-		return jetCopy;
-	}
-
 	public List<Jet> getAirfield() {
 		return planes;
-	}
-
-	public void setAirfield(List<Jet> airfield) {
-		this.planes = airfield;
 	}
 
 	public void addAJet(Scanner kb) {
 		System.out.println(
 				"What style of jet would you like to add? You can choose Passenger Jet, Cargo Jet or Sea Plane.");
-		String input = kb.nextLine();
+		// Flush scanner
 		kb.nextLine();
+		String input = kb.nextLine();
 		Jet newJet = getJetType(input);
-		 
+		
 		System.out.println("Please input the model of the new jet");
 		newJet.setModel(kb.nextLine());
 		System.out.println("What is this model's top speed?");
@@ -66,33 +56,51 @@ public class Airfield {
 		System.out.println("How much would one of these babys cost?");
 		newJet.setPrice(kb.nextLong());
 		planes.add(newJet);
-
 	}
 
 	public Jet getJetType(String input) {
+		Scanner kb = new Scanner(System.in);
 		Jet newJet = null;
+		while(true) {
 		switch (input.toLowerCase()) {
 		case "cargo jet":
-			System.out.println("You selected a Cargo Jet.");
 			newJet = new CargoJet();
 			break;
 
 		case "passenger jet":
-			System.out.println("You selected a Passenger Jet.");
 			newJet = new JetImpl();
 			break;
 
 		case "sea plane":
-			System.out.println("You selected a Sea Plane.");
 			newJet = new SeaPlane();
 			break;
 
 		default:
-			System.out.println("Invalid selection");
-			break;
+			System.out.println("Invalid plane type, please try agian");
+			input = kb.nextLine().toLowerCase();
+			continue;
 		}
-		return newJet;
-
+		
+		return newJet;}
 	}
 
+	public void removeAJet(Scanner kb) {
+		System.out.println("Please enter the number of the plane you would like to remove.");
+		int counter = 0;
+		for (Jet jet : planes) {
+			System.out.println(counter + " " + jet.getModel());
+			counter++;
+		}
+		int input = kb.nextInt();
+		while (true) {
+			if (input > planes.size() - 1) {
+				System.out.println("Invalid selection, please try again.");
+				input = kb.nextInt();
+			} else {
+				planes.remove(input);
+				System.out.println("Consider it done. Please select the next menu task.");
+				break;
+			}
+		}
+	}
 }

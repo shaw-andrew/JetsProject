@@ -3,32 +3,21 @@ package com.skilldistillery.jets.entities;
 import java.util.Objects;
 
 public abstract class Jet {
-//abstract method
-	
-	//private String type;
+
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
-	
-	//no arg constructor
-	public Jet() {}
-	
+
+	public Jet() {
+	}
+
 	public Jet(String model, double speed, int range, long price) {
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
-	
-
-//	public String getType() {
-//		return type;
-//	}
-
-//	public void setType(String type) {
-//		this.type = type;
-//	}
 
 	public String getModel() {
 		return model;
@@ -61,7 +50,7 @@ public abstract class Jet {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Jet model: " + model + ", speed: " + speed + " mph, range: " + range + " miles, price: $" + price;
@@ -83,5 +72,5 @@ public abstract class Jet {
 		Jet other = (Jet) obj;
 		return Objects.equals(model, other.model) && price == other.price && range == other.range
 				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed);
-	}}
-	
+	}
+}
